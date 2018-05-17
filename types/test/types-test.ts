@@ -5,6 +5,9 @@ interface Schema {
   test: string;
 }
 
+interface Person { name: string;  address: Address; }
+interface Address { zip: number, street: string;  city: string; owner: Person }
+
 var gun = new Gun<Schema>();
 var owner = gun.get('mark')
 gun.get('mark')
@@ -19,9 +22,9 @@ gun.put(["test"]); // should fail
 
 gun.put({ test: "blums" });
 
-interface Person { name: string;  address: Address; }
-
-interface Address { street: string;  city: string; owner: Person }
+gun.get('mark').on(d => {
+  
+})
 
 interface Ref { ref: string; }
 
@@ -42,6 +45,16 @@ gun
   .put("emilia")
   .put({ name: "Emilia" }); // should fail
 
+gun.get("mark").get('name').on(function(data, key) {
+  console.log("update:", data);
+});
 gun.get("mark").on(function(data, key) {
   console.log("update:", data);
 });
+
+
+gun.get('mark').get('address').map().on(function (data, key) {
+    if(key === 'zip' ) {
+      data // should be number
+    }
+})

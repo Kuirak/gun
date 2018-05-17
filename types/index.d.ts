@@ -31,16 +31,38 @@ declare class GunClass<S = any> {
   // TODO: Find a better way
   back<P>(amount?: number): GunClass<P>;
 
-  on(callback: Callback<R>, option?: { change: false } | false): GunClass<S>;
+  on(callback: OneLevelCallback<S>, options?: { change: false } | false): GunClass<S>;
   on(
-    callback: Callback<Partial<R>>,
-    option?: { change: true } | true
+    callback: OneLevelCallback<Partial<S>>,
+    options: { change: true } | true
   ): GunClass<S>;
+  off();
+
+  once(callback: OneLevelCallback<S>, options?: OnceOptions): GunClass<S>;
+  // TODO: Introduce GunOnceClass if necessary
+  once(): GunClass<S>;
+  // TODO: set should only be available when S is a GunSet
+  //set(key: keyof S): GunSetClass
+
+  // TODO: map should only be available on non Primitives
+  map(): GunMapClass<S>;
 }
-type Callback = <S>(data: OneLevel<S>)=> void
 
-//TODO: check Extract from TS 2.8
+declare class GunMapClass<S> {
+  on(callback: MapCallback<S>, options?: { change: false } | false): GunClass<S>;
+  on(callback: MapCallback<Partial<S>>, options: { change: true } | true): GunClass<S>;
+  once(callback: MapCallback<S>, options?: OnceOptions): GunClass<S>;
+}
 
+interface OnceOptions  { wait: number }
+
+// TODO: find a way to type data combined with key e.g. zip: number => key: 'zip', data: number
+type MapCallback<S> = (data: S[keyof S], key: keyof S) => void;
+
+// TODO: Find out type of key
+type OneLevelCallback<S> = (data: OneLevelOrPrimitives<S>, key: string) => void;
+
+type OneLevelOrPrimitives<S> = S extends Primitives ? S : OneLevel<S>;
 type Data = null | Primitives | object;
 type Primitives = string | number | boolean;
 
@@ -55,7 +77,7 @@ interface S3Options {
 interface GunOptions {
   peers?: Peers;
   uuid?: () => string;
-  [key in string]: any;
+  [key: string]: any;
 }
 
 interface GunServerOptions extends GunOptions {
@@ -73,8 +95,21 @@ interface Ack {
   ok?: string;
 }
 
+type Soul = { "#": string };
+
 type AckCallback = (ack: Ack) => void;
 
 declare namespace GunClass {
   // Types can be exported here
 }
+
+// TYPE HELPERS
+
+type NonNeverKeys<T> = keyof T &
+  { [K in keyof T]: T[K] extends never ? never : K }[keyof T];
+
+type ExcludeNever<T> = Pick<T, NonNeverKeys<T>>;
+
+type OnlyType<T, P> = ExcludeNever<{ [K in keyof T]: Extract<T[K], P> }>;
+
+type OneLevel<T> = OnlyType<T, Primitives>;
