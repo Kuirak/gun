@@ -46,7 +46,7 @@
 		console.log(print);
 	}, 2500);
 
-	var Gun = require('../gun');
+	var Gun = require('@gun/core');
 	Gun.on('opt', function(root){
 		this.to.next(root);
 		if(root.once){ return }

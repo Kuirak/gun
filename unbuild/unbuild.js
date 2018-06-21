@@ -62,7 +62,7 @@ var path = function(p){
 	if('.js' !== path.slice(-3)){
 		path += '.js';
 	}
-	return nodePath.join('./'+(p||'src'), path);
+	return nodePath.join('./packages/gun-' + (p || 'core') + '/src', path);
 }
 
 var undent = function(code, n){
@@ -78,13 +78,14 @@ var undent = function(code, n){
 	var arg = process.argv[2] || 'gun';
 
 	if('gun' === arg){
-		rm('./src');
-		mk('./src');
-		mk('./src/polyfill');
-		mk('./src/adapters');
+		rm('./packages/gun-core/src');
+		mk('./packages/gun-core/src');
+		mk('./packages/gun-core/src/polyfill');
+		mk('./packages/gun-core/src/adapters');
 	} else {
-		rm('./'+arg);
-		mk('./'+arg);
+		rm('./packages/gun-' + arg);
+		mk('./packages/gun-' + arg);
+		mk('./packages/gun-' + arg + '/src');
 	}
 
 	var f = read(arg+'.js');
@@ -94,7 +95,7 @@ var undent = function(code, n){
 	code = next("/* UNBUILD */");
 	
 	if('gun' === arg){
-		write('src/polyfill/unbuild.js', undent(code, 1));
+		write('packages/gun-core/src/polyfill/unbuild.js', undent(code, 1));
 		arg = '';
 	}
 

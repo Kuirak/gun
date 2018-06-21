@@ -3,7 +3,7 @@
 // twas not designed for production use
 // only simple local development.
 
-var Gun = require('../gun'),
+var Gun = require('@gun/core'),
 fs = require('fs');
 
 Gun.on('opt', function(ctx){

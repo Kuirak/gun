@@ -1,5 +1,5 @@
 ;(function(){
-	var Gun = (typeof window !== 'undefined')? window.Gun : require('../gun');
+	var Gun = (typeof window !== 'undefined')? window.Gun : require('@gun/core');
 	
 	var ev = {}, empty = {}, u;
 	Gun.on('opt', function(root){

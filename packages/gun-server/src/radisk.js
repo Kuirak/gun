@@ -1,5 +1,5 @@
 var fs = require('fs');
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 var Radix = require('./radix');
 
 function Radisk(opt){

@@ -1,4 +1,4 @@
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 var Radisk = require('./radisk');
 var fs = require('fs');
 var Radix = Radisk.Radix;
@@ -124,9 +124,9 @@ module.exports = Store;
 	process.env.AWS_S3_THROTTLE = 0;
 
 	return;
-	global.Gun = require('../gun');
+	global.Gun = require('@gun/core');
 	//require('./rs3');
 	
 	
-	require('../test/abc');
+	require('../../../test/abc'); // TODO: check import is needed
 }());

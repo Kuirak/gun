@@ -1,5 +1,5 @@
 var url = require('url');
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 
 /**
  * Verify the origin

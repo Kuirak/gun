@@ -1,5 +1,5 @@
 ;(function(){
-	var Gun = require('../gun'), u;
+	var Gun = require('@gun/core'), u;
 	Gun.serve = require('./serve');
 	process.env.GUN_ENV = process.env.GUN_ENV || 'debug';
 	Gun.on('opt', function(root){
@@ -8,7 +8,7 @@
 		if(u !== root.opt.super){ return }
 		root.opt.super = true;
 	})
-	require('../nts');
+	require('../../../nts'); // TODO: Fix import
 	require('./store');
 	require('./rs3');
 	//try{require('./ws');}catch(e){require('./wsp/server');}

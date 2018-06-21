@@ -1,7 +1,7 @@
 if(typeof window !== "undefined"){
   var Gun = window.Gun;
 } else { 
-  var Gun = require('../gun');
+  var Gun = require('@gun/core');
 }
 
 Gun.on('opt', function(ctx){

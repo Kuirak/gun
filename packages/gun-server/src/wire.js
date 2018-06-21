@@ -1,4 +1,4 @@
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 
 /*
 	An Ad-Hoc Mesh-Network Daisy-Chain

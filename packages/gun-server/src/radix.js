@@ -1,4 +1,4 @@
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 ;(function(){
 	var map = Gun.obj.map, no = {}, u;
 

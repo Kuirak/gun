@@ -1,4 +1,4 @@
-var Gun = require('../gun');
+var Gun = require('@gun/core');
 var Radisk = require('./radisk');
 var fs = require('fs');
 var Radix = Radisk.Radix;

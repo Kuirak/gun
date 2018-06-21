@@ -1,0 +1,29 @@
+{
+  "name": "@gun/sea",
+  "version": "0.9.9991",
+  "description": "Security, Encryption, Authentication for gunDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amark/gun.git"
+  },
+  "keywords": [
+    "gun",
+    "gunDB"
+  ],
+  "author": "Mark Nadal",
+  "license": "(Zlib OR MIT OR Apache-2.0)",
+  "bugs": {
+    "url": "https://github.com/amark/gun/issues"
+  },
+  "homepage": "https://github.com/amark/gun#readme",
+  "dependencies": {
+    "@gun/core": "^0.9.9991"
+  },
+  "devDependencies": {
+    "mocha": ">=3.2.0"
+  }
+}
