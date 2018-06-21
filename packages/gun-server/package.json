@@ -2,7 +2,7 @@
   "name": "@gun/server",
   "version": "0.9.9991",
   "description": "Server implementation of gunDB",
-  "main": "src/server.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
