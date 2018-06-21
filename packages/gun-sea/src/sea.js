@@ -73,7 +73,7 @@
     // But all other behavior needs to be equally easy, like opinionated ways of
     // Adding friends (trusted public keys), sending private messages, etc.
     // Cheers! Tell me what you think.
-    var Gun = (SEA.window||{}).Gun || require('./gun');
+    var Gun = (SEA.window||{}).Gun || require('@gun/core');
     Gun.SEA = SEA;
     SEA.Gun = Gun;
 

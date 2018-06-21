@@ -1,8 +1,8 @@
 {
-  "name": "@gun/server",
+  "name": "@gun/path",
   "version": "0.9.9991",
-  "description": "Server implementation of gunDB",
-  "main": "src/server.js",
+  "description": "",
+  "main": "src/path.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,11 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/amark/gun.git"
   },
-  "keywords": [
-    "gun",
-    "gunDB",
-    "server"
-  ],
   "author": "Mark Nadal",
   "license": "(Zlib OR MIT OR Apache-2.0)",
   "bugs": {
@@ -22,9 +17,6 @@
   },
   "homepage": "https://github.com/amark/gun#readme",
   "dependencies": {
-    "@gun/bye": "^0.9.9991",
-    "@gun/core": "^0.9.9991",
-    "@gun/nts": "^0.9.9991",
-    "ws": "^3.2.0"
+    "@gun/core": "^0.9.9991"
   }
 }

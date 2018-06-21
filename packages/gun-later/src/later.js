@@ -1,5 +1,5 @@
-var Gun = Gun || require('../gun');
-Gun.chain.open || require('gun/lib/open');
+var Gun = Gun || require('@gun/core');
+Gun.chain.open || require('@gun/open');
 
 Gun.chain.later = function(cb, age){
 	var gun = this;

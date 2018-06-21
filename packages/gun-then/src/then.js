@@ -1,4 +1,4 @@
-var Gun = Gun || require('../gun');
+var Gun = Gun || require('@gun/core');
 
 Gun.chain.promise = function(cb) {
   var gun = this, cb = cb || function(ctx) { return ctx };

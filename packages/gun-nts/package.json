@@ -1,8 +1,8 @@
 {
-  "name": "@gun/server",
+  "name": "@gun/nts",
   "version": "0.9.9991",
-  "description": "Server implementation of gunDB",
-  "main": "src/server.js",
+  "description": "Network Time Server Module",
+  "main": "src/nts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,10 @@
     "url": "git+https://github.com/amark/gun.git"
   },
   "keywords": [
+    "timeserver",
+    "nts",
     "gun",
-    "gunDB",
-    "server"
+    "gunDB"
   ],
   "author": "Mark Nadal",
   "license": "(Zlib OR MIT OR Apache-2.0)",
@@ -22,9 +23,6 @@
   },
   "homepage": "https://github.com/amark/gun#readme",
   "dependencies": {
-    "@gun/bye": "^0.9.9991",
-    "@gun/core": "^0.9.9991",
-    "@gun/nts": "^0.9.9991",
-    "ws": "^3.2.0"
+    "@gun/core": "^0.9.9991"
   }
 }
