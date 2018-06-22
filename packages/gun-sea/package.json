@@ -4,7 +4,9 @@
   "description": "Security, Encryption, Authentication for gunDB",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "prepublish": "npm run build",
+    "test": "mocha",
+    "build": "node ../../script/unbuild.js sea"
   },
   "repository": {
     "type": "git",

@@ -2,10 +2,7 @@
   "name": "@gun/bye",
   "version": "0.9.9991",
   "description": "",
-  "main": "src/bye.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "src/bye.js", 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amark/gun.git"

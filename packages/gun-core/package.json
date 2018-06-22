@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "browser": "dist/gun.js",
   "scripts": {
-    "prepublish": "node ../../unbuild/unbuild.js && npm run build",
+    "prepublish": "npm run build",
     "test": "mocha",
-    "build": "rm -rf dist && rollup --config && uglifyjs dist/gun.js -o dist/gun.min.js -c -m"
+    "build": "node ../../script/unbuild.js && rm -rf dist && rollup --config && uglifyjs dist/gun.js -o dist/gun.min.js -c -m"
   },
   "repository": {
     "type": "git",

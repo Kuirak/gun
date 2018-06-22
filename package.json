@@ -12,7 +12,7 @@
     "testsea": "mocha test/sea.js",
     "e2e": "mocha e2e/distributed.js",
     "docker": "hooks/build",
-    "unbuild": "node unbuild/unbuild.js && uglifyjs gun.js -o gun.min.js -c -m"
+    "unbuild": "node script/unbuild.js && uglifyjs gun.js -o gun.min.js -c -m"
   },
   "repository": {
     "type": "git",

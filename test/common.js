@@ -8,11 +8,11 @@ var root;
 		root.Gun = root.Gun;
 	} else {
 		root.Gun = require('../gun');
-		Gun.serve = require('../lib/serve');
+		Gun.serve = require('../packages/gun-server/src/serve');
 		//require('./s3');
 		//require('./uws');
 		//require('./wsp/server');
-		require('../lib/file');
+		require('../packages/gun-server/src/file');
 	}
 }(this));
 //Gun.log.squelch = true;
