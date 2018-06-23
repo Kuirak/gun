@@ -62,7 +62,8 @@ var path = function(p){
 	if('.js' !== path.slice(-3)){
 		path += '.js';
 	}
-	return nodePath.join('./packages/gun-' + (p || 'core') + '/src', path);
+	var packageName = 'gun-' + (p || 'core');
+	return nodePath.join('packages', packageName , 'src', path);
 }
 
 var undent = function(code, n){
@@ -98,11 +99,16 @@ var undent = function(code, n){
 		arg = '';
 	}
 
+	function convertGunCoreRequire(code) {
+		return code.replace(/require\('\.\/gun'\)/g,"require('@gun/core')");
+	}
+
 	(function recurse(c){
 		code = next(";USE(function(module){", "})(USE");
 		if(!code){ return }
 		var file = path(arg);
 		if(!file){ return }
+		code = convertGunCoreRequire(code)
 		code = code.replace(/\bUSE\(/g, 'require(');
 		write(file, undent(code));
 		recurse();

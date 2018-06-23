@@ -1,0 +1,13 @@
+packages/**
+archive/**
+test/**
+script/**
+hooks/**
+examples/**
+
+lerna.json
+Procfile
+bower.json
+Dockerfile
+app.json
+.travis.yml
