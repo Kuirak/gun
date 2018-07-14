@@ -1,6 +1,6 @@
 {
   "name": "gun",
-  "version": "0.9.996",
+  "version": "0.9.9994",
   "description": "A realtime, decentralized, offline-first, graph data synchronization engine.",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -49,7 +49,7 @@
     "node": ">=0.8.4"
   },
   "dependencies": {
-    "ws": "~>4.0.0"
+    "ws": "~>5.2.0"
   },
   "devDependencies": {
     "@trust/webcrypto": "^0.7.1",
