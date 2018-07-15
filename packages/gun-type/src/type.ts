@@ -27,7 +27,7 @@ export const randomText = (length: number = 24, characters: string = defaultChar
 // * isArray supported since IE9: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray#Browser_compatibility
 export const isList = Array.isArray;
 
-// TODO export const mapList = (l, c, _) => mapObject(l, c, _);
+const mapList = <T, R>(list: T[], transform: (element: T) => R): R[] => list.map(transform);
 
 // ? Not sure if Object is correct
 export const isObject = (
@@ -82,4 +82,19 @@ export const objectify = (obj: any) => {
 
 // because http://web.archive.org/web/20140328224025/http://jsperf.com/cloning-an-object/2
 // is shockingly faster than anything else, and our data has to be a subset of JSON anyways!
-export const copyObject = (obj: any)=> 	 !obj? obj : JSON.parse(JSON.stringify(obj))
+export const copyObject = (obj: any) => (!obj ? obj : JSON.parse(JSON.stringify(obj)));
+
+type Wrap<T, P> = { [V in keyof P]: T };
+
+export const mapObject = <T extends object, K extends keyof T, R>(
+  from: T,
+  transform: (o: T[K], key: K) => R
+): Record<K, R> => {
+  return (Object.keys(from) as K[]).reduce(
+    (newObj, key) => {
+      newObj[key] = transform(from[key], key);
+      return newObj;
+    },
+    {} as Record<K, R>
+  );
+};
