@@ -38,14 +38,14 @@ export const isObject = (
       Object.prototype.toString.call(obj).match(/^\[object (\w+)\]$/)[1] === 'Object'
     : false;
 
-export const putInObject = (obj: object, key: string | number | symbol, value: any): object => (
+export const putInObject = (obj: any, key: string | number | symbol, value: any): object => (
   ((obj || {})[key] = value), obj
 );
 
 export const objectHas = (obj: object, key: string | number | symbol) =>
   obj && Object.prototype.hasOwnProperty.call(obj, key);
 
-export const deleteFromObject = (obj: object, key: string | number | symbol) => {
+export const deleteFromObject = (obj: any, key: string | number | symbol) => {
   if (!obj) {
     return;
   }
@@ -54,7 +54,7 @@ export const deleteFromObject = (obj: object, key: string | number | symbol) => 
   return obj;
 };
 
-const isNullOrUndefined = (arg: any): arg is undefined | null => arg == null;
+export const isNullOrUndefined = (arg: any): arg is undefined | null => arg == null;
 
 // ! as o.O
 export const getKeyWhenExists = <T, K extends keyof T, D>(

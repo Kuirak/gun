@@ -3,9 +3,12 @@
   "version": "0.10.0",
   "private": true,
   "description": "Gun Type Helper",
-  "main": "src/type.ts",
+  "main": "dist/type.js",
+  "types": "dist/type.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",
