@@ -1,6 +1,7 @@
 {
   "name": "@gun/ham",
   "version": "0.10.0",
+  "private": true,
   "description": "Hypothetical Amnesia Machine",
   "main": "index.js",
   "scripts": {
