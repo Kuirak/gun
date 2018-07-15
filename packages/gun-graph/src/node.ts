@@ -5,11 +5,15 @@
 import { LinkKey, Soul, Link, isValue } from './value';
 import { randomText, isText, deleteFromObject, isObject, isFunction } from '@gun/type';
 
-export interface Node extends Partial<Record<string,string |number | boolean| Partial<Link>>> {
-  _: Partial<Link>;
-};
+export interface Node extends Partial<Record<string, string | number | boolean | Link>> {
+  _: Link;
+}
 
-export const soulify = (node: Partial<Node> = {}, soul?: Soul): Node => {
+type DeepPartial<T> = {
+  [K in keyof T]?: DeepPartial<T[K]>
+}
+
+export const soulify = (node: DeepPartial<Node> = {}, soul?: Soul): Node => {
   if (!node._) {
     node._ = { [LinkKey]: soul || randomText() };
   } else if (soul) {
@@ -20,7 +24,7 @@ export const soulify = (node: Partial<Node> = {}, soul?: Soul): Node => {
   return node as Node;
 };
 
-export const getSoul = (node: Partial<Node>): Soul | undefined => node && node._ && node._[LinkKey];
+export const getSoul = (node: DeepPartial<Node>): Soul | undefined => node && node._ && node._[LinkKey];
 
 type MapFunc = (obj, u, node: Partial<Node>) => Node;
 
