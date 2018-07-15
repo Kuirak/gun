@@ -1,7 +1,7 @@
 /*
 * @prettier
 */
-import { isBoolean, isText, isNumber, isObject, putInObject } from '@gun/type';
+import { isBoolean, isText, isNumber, isObject } from '@gun/type';
 
 export const isValue = (value: any) => {
   // if(value === u) { return false } // ? What is u
@@ -17,17 +17,13 @@ export const isValue = (value: any) => {
   return isLink(value) || false;
 };
 
-const LinkKey = '#';
+export const LinkKey = '#';
 
 export interface Link {
   [LinkKey]: Soul;
 }
 
-export interface SelfLink {
-  _: Link;
-}
-
-type Soul = string;
+export type Soul = string;
 
 export const isLink = (value: any): Soul | false => {
   if (value && value[LinkKey] && !value._ && isObject(value)) {
