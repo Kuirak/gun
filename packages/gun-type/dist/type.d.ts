@@ -1,0 +1,16 @@
+export declare const isFunction: (fn: any) => fn is Function;
+export declare const isBoolean: (bool: any) => bool is boolean;
+export declare const isNumber: (num: any) => num is number;
+export declare const isText: (text: any) => text is string;
+export declare const textify: (text: any) => string;
+export declare const randomText: (length?: number, characters?: string) => string;
+export declare const isList: (arg: any) => arg is any[];
+export declare const isObject: (obj: any) => Object;
+export declare const putInObject: (obj: any, key: string | number | symbol, value: any) => object;
+export declare const objectHas: (obj: object, key: string | number | symbol) => any;
+export declare const deleteFromObject: (obj: any, key: string | number | symbol) => any;
+export declare const isNullOrUndefined: (arg: any) => arg is null | undefined;
+export declare const getKeyWhenExists: <T, K extends keyof T, D>(obj: T, key: K, defaultValue: D, compareValue: D) => {} | D | T[K];
+export declare const objectify: (obj: any) => any;
+export declare const copyObject: (obj: any) => any;
+export declare const mapObject: <T extends object, K extends keyof T, R>(from: T, transform: (o: T[K], key: K) => R) => Record<K, R>;
