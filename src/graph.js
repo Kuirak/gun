@@ -126,23 +126,23 @@ Graph.node = function(node){
 		obj_map(graph[root], map, {obj:obj, graph: graph, opt: opt});
 		return obj;
 	}
-	function map(v,k){ var tmp, obj;
-		if(Node._ === k){
-			if(obj_empty(v, Val.rel._)){
+	function map(value,key){ var tmp, obj;
+		if(Node._ === key){
+			if(obj_empty(value, Val.rel._)){
 				return;
 			}
-			this.obj[k] = obj_copy(v);
+			this.obj[key] = obj_copy(value);
 			return;
 		}
-		if(!(tmp = Val.rel.is(v))){
-			this.obj[k] = v;
+		if(!(tmp = Val.rel.is(value))){
+			this.obj[key] = value;
 			return;
 		}
 		if(obj = this.opt.seen[tmp]){
-			this.obj[k] = obj;
+			this.obj[key] = obj;
 			return;
 		}
-		this.obj[k] = this.opt.seen[tmp] = Graph.to(this.graph, tmp, this.opt);
+		this.obj[key] = this.opt.seen[tmp] = Graph.to(this.graph, tmp, this.opt);
 	}
 }());
 var fn_is = Type.fn.is;

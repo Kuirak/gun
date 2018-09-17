@@ -35,4 +35,4 @@ export const isLink = (value: any): Soul | false => {
   return false; // the value was not a valid soul relation.
 };
 
-export const linkify = (soul: Soul) => ({ [LinkKey]: soul });
+export const toLink = (soul: Soul) => ({ [LinkKey]: soul });

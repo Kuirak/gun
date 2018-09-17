@@ -5,15 +5,15 @@
 import { LinkKey, Soul, Link, isValue } from './value';
 import { randomText, isText, deleteFromObject, isObject, isFunction } from '@gun/type';
 
-export interface Node extends Partial<Record<string, string | number | boolean | Link>> {
+type Primitives = string | number | boolean | null;
+
+export interface Node extends Partial<Record<string, Primitives | Link>> {
   _: Link;
 }
 
-type DeepPartial<T> = {
-  [K in keyof T]?: DeepPartial<T[K]>
-}
+type DeepPartial<T> = { [K in keyof T]?: DeepPartial<T[K]> };
 
-export const soulify = (node: DeepPartial<Node> = {}, soul?: Soul): Node => {
+export const addSoul = (node: DeepPartial<Node> = {}, soul?: Soul): Node => {
   if (!node._) {
     node._ = { [LinkKey]: soul || randomText() };
   } else if (soul) {
@@ -50,7 +50,7 @@ export const nodeify = (obj, soulOrMap?: Soul | MapFunc | Partial<NodeifyOptions
   if (o.map) {
     o.node = o.map.call(as, obj, u, o.node || {});
   }
-  if ((o.node = soulify(o.node || {}, soulOrMap))) {
+  if ((o.node = addSoul(o.node || {}, soulOrMap))) {
     obj_map(obj, map, { o: soulOrMap, as: as });
   }
   return o.node; // This will only be a valid node if the object wasn't already deep!

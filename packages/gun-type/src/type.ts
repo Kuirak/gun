@@ -43,7 +43,7 @@ export const putInObject = (obj: any, key: string | number | symbol, value: any)
 );
 
 export const objectHas = (obj: object, key: string | number | symbol) =>
-  obj && Object.prototype.hasOwnProperty.call(obj, key);
+  obj && obj.hasOwnProperty(key);
 
 export const deleteFromObject = (obj: any, key: string | number | symbol) => {
   if (!obj) {

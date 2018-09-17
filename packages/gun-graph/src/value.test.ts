@@ -2,7 +2,7 @@
 * @prettier
 */
 
-import { isLink, isValue, linkify } from './value';
+import { isLink, isValue, toLink } from './value';
 
 describe('Gun Value Helper', () => {
   it('is value', function() {
@@ -44,6 +44,6 @@ describe('Gun Value Helper', () => {
   });
 
   it('converts soul into link', () => {
-    expect(linkify('somesoulidhere')).toEqual({ '#': 'somesoulidhere' });
+    expect(toLink('somesoulidhere')).toEqual({ '#': 'somesoulidhere' });
   });
 });
